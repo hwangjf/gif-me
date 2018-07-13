@@ -5,7 +5,7 @@ export default class NavBar extends Component {
   render() {
     return (
       <Jumbotron>
-        <h1>Gif Savor</h1>
+        <h1>Gif Me</h1>
       </Jumbotron>
     )
   }

@@ -1,9 +1,11 @@
 import React from 'react';
 import Gif from '../component/Gif'
+import RegisterForm from '../component/RegisterForm'
 import GifSearchBar from '../component/GifSearchBar'
 import UUID from 'uuid'
 import Adapter from '../Adapter'
-
+import {Route} from 'react-router-dom'
+import LoginContainer from './LoginContainer';
 const apiKey = process.env.REACT_APP_API_KEY
 
 export default class GifContainer extends React.Component {
@@ -69,6 +71,7 @@ export default class GifContainer extends React.Component {
         <br/>
         <br />
         <br />
+        {/* <Route exact path="/register" component={LoginContainer} /> */}
       </div>
     )
   }

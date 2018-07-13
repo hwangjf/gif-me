@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import JumboHeader from '../component/JumboHeader'
 
 export default class Home extends Component {
   render() {
     return (
-      <h1>Home</h1>
+      <React.Fragment>
+        <JumboHeader />
+      </React.Fragment>
     )
   }
 }

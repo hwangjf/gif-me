@@ -8,6 +8,8 @@ import GifContainer from './container/GifContainer'
 import LoginContainer from './container/LoginContainer'
 import { Switch, Route } from 'react-router-dom';
 import Home from './component/Home'
+import LoginForm from './component/LoginForm'
+import RegisterForm from './component/RegisterForm'
 
 class App extends Component {
   state = {
@@ -37,8 +39,13 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
+        <Home />
+        {/* <LoginContainer /> */}
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/register" component={RegisterForm} />
+        <Route exact path="/gifs" component={GifContainer} />
         {/* <JumboHeader /> */}
-        {this.state.loggedIn 
+        {/* {this.state.loggedIn 
           ?
           <LoginContainer 
             handleLogin={this.handleLogin}
@@ -58,10 +65,9 @@ class App extends Component {
             user={this.state.user} 
             handleClick={this.handleClick} /> 
           : 
-          null}
+          null} */}
 
         {/* <BlogForm /> */}
-        <Route exact path="/" component={Home} />
       </div>
     );
   }
