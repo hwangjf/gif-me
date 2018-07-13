@@ -6,6 +6,7 @@ export default class Home extends Component {
     return (
       <React.Fragment>
         <JumboHeader />
+        {/* <h3>Welcome to Gif Me. You can have all the gifs your heart desires.</h3> */}
       </React.Fragment>
     )
   }

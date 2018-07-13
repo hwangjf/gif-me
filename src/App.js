@@ -10,21 +10,21 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './component/Home'
 import LoginForm from './component/LoginForm'
 import RegisterForm from './component/RegisterForm'
+import Adapter from './Adapter'
 
 class App extends Component {
   state = {
-    loggedIn: false,
     user: '',
     likes: []
   }
 
-  handleLogin = (username) => {
-    this.state.loggedIn ? this.setState({ loggedIn: false, user:'' }):this.setState({ loggedIn: true, user: username })
-  }
+  // handleLogin = (username) => {
+  //   this.state.loggedIn ? this.setState({ loggedIn: false, user:'' }):this.setState({ loggedIn: true, user: username })
+  // }
 
-  handleLogout = (event) => {
-    this.setState({ loggedIn: false, user: '' })
-  }
+  // handleLogout = (event) => {
+  //   this.setState({ loggedIn: false, user: '' })
+  // }
 
   handleClick = (event,id) => {
     if (this.state.likes.includes(id)) {
@@ -35,16 +35,25 @@ class App extends Component {
     }
   }
 
+  getUser = (id,fn) => {
+    this.setState({user:id},()=>{console.log(this.state.user)},fn())
+  }
+
   render() {
     return (
       <div className="App">
         <NavBar />
         <Home />
         {/* <LoginContainer /> */}
-        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/login" component={()=><LoginForm getUser={this.getUser}/>} />
         <Route exact path="/register" component={RegisterForm} />
-        <Route exact path="/gifs" component={GifContainer} />
-        {/* <JumboHeader /> */}
+        <Route exact path="/gifs" component={()=><GifContainer handleClick={this.handleClick} />} />
+        {Adapter.isLoggedIn() 
+        ? 
+        this.getUser
+        :
+        null
+        }
         {/* {this.state.loggedIn 
           ?
           <LoginContainer 

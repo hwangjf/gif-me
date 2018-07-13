@@ -20,22 +20,43 @@ export default class LoginContainer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log(event)
     // console.log(this.state)
 
-    this.props.handleLogin(this.state.username)
+    // this.props.handleLogin(this.state.username)
+    // if (event.target.id === "register") {
+    //   const config = {
+    //     method:'POST',
+    //     headers: {
+    //       "content-type":"application/json"
+    //     },
+    //     body: JSON.stringify({username:this.state.username,password:this.state.password})
+    //   }
+    //   fetch('http://localhost:3000/users',config)
+    //     .then(res=>res.json())
+    //     .then(json=> {
+    //       console.log(json);
+    //       localStorage.setItem('token', json.token);
+    //       this.props.history.push("/gifs")
+    //     })
+    // }
 
-    fetch('')
-
-    this.setState({
-      username: '',
-      password: ''
-    })
+    // this.setState({
+    //   username: '',
+    //   password: ''
+    // })
   }
+
+  // handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   this.props.history.push("/gifs")
+  //   console.log(event.target.id)
+  // }
 
   render() {
     return (
       <div className="logincontainer">
-        {this.props.loggedIn ? 
+        {this.props.loggedIn ?
           <button type="button" onClick={this.props.handleLogout}>Logout</button>
           :
           <div>

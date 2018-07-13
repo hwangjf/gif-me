@@ -2,40 +2,57 @@ import React, { Component } from 'react';
 
 export default class RegisterForm extends Component {
   state = {
-    show: false
+    username: '',
+    password: ''
   }
 
-  handleClick = (event) => {
-    this.state.show ? this.setState({show: false}) : this.setState({show: true})
+  // handleClick = (event) => {
+  //   this.state.show ? this.setState({show: false}) : this.setState({show: true})
+  // }
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const config = {
+      method:'POST',
+      headers: {
+        "content-type":"application/json"
+      },
+      body: JSON.stringify(this.state)
+    }
+    fetch('http://localhost:3000/users',config)
+      .then(res=>res.json())
+      .then(json=> {
+        console.log(json);
+        localStorage.setItem('token', json.token);
+        this.props.history.push("/gifs")
+      })
   }
 
   render() {
     return (
       <div>
-        <h2 onClick={this.handleClick} >Sign Up</h2>
-        {this.state.show
-        ?
-          <form onSubmit={this.props.handleSubmit}>
+        <h2>Register</h2>
+          <form id="register" onSubmit={this.handleSubmit}>
             <label>Username:</label>
             <input
               type="text"
-              value={this.props.username}
+              value={this.state.username}
               name="username"
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
             <label>Password:</label>
             <input
               type="text"
-              value={this.props.password}
+              value={this.state.password}
               name="password"
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
-            <button type="submit">Create User</button>
+            <button type="submit" >Create User</button>
           </form>
-        :
-          null
-        }
-        
       </div>
     )
   }

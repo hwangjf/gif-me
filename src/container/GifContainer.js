@@ -24,7 +24,7 @@ export default class GifContainer extends React.Component {
 
   handleNext = () => {
     let index = this.state.index + 1
-    if (index>24) {
+    if (index > 24) {
       index = 0
       this.setState({index})
       return
