@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.nav {
+  margin-top: 35px;
+  display: flex;
+  text-align: center;
+  height: 60px;
+  align-content: bottom;
+}
+
+.nav a {
+  flex: 1;
+  padding: 10px;
+  margin: 5px 15px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover, .selected {
+  background:lightgoldenrodyellow;
+}
